@@ -1,4 +1,5 @@
 const dino = document.querySelector(".dino");
+const background = document.querySelector('.background');
 let isJumping = false;
 
 function handleKeyUp(event) {
@@ -39,4 +40,14 @@ function jump() {
     dino.style.bottom = position + "px";
   }, 20); // a cada 20 milisegundos o codigo vai ser repetido
 }
+
+function createCactus(){
+    const cactus = document.createElement('div');
+    let cactusPosition =1000;
+
+    cactus.classList.add('cactus');
+    cactus.style.left = 1000 +'px';
+    background.appendChild(cactus);
+}
+createCactus();
 document.addEventListener("keyup", handleKeyUp);
