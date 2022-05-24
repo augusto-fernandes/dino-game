@@ -1,7 +1,7 @@
 const dino = document.querySelector(".dino");
 const background = document.querySelector(".background");
 let isJumping = false;
-
+let position = 0;
 function handleKeyUp(event) {
   //32 é o keycode do espaço
   //site para ver outros key code: https://www.toptal.com/developers/keycode
@@ -13,8 +13,6 @@ function handleKeyUp(event) {
 }
 
 function jump() {
-  let position = 0;
-
   isJumping = true;
 
   let upInterval = setInterval(() => {
@@ -52,6 +50,10 @@ function createCactus() {
     if (cactusPosition < -60) {
       clearInterval(leftInterval);
       background.removeChild(cactus);
+    } else if (cactusPosition > 0 && cactusPosition < 60 && position < 60) {
+      //Game Over
+      clearInterval(leftInterval);
+      document.body.innerHTML = '<h1 class="game-over">Fim de Jogo</h1>';
     } else {
       cactusPosition -= 10;
       cactus.style.left = cactusPosition + "px";
